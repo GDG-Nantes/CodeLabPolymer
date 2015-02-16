@@ -8,7 +8,8 @@ Le but est de créer un composant comme dans le code lab de google. J'ai juste m
 * step-1 : création du composant post-card sans style
 * step-2 : ajout du style et du contenu (vérifier l'isolation)
 * step-3 : création du comoposant post-list
-* step-3+ : équivalent au steps de Google
+* step-4 : Ajout du style de paper pour se simplifier la vie au niveau des styles
+* step-5 : mise en place d'interactions
 
 # Step 1 
 
@@ -209,3 +210,71 @@ dans le index.html on retire l'import de post-card.html et à la place on met po
   <script src="app.js"></script>
 </body>
 ```
+
+# Step 4 
+
+On va commencer à jouer avec les composants Polymer afin d'afiner l'ihm
+
+## Ajout du conteneur responsive et flex
+
+```html
+<link rel="import"
+  href="../components/core-header-panel/core-header-panel.html">
+<link rel="import"
+  href="../components/core-header-panel/core-header-panel.html">
+<link rel="import"
+  href="../components/core-toolbar/core-toolbar.html">
+<link rel="import"
+  href="../components/paper-tabs/paper-tabs.html">
+
+<body unresolved fullbleed layout vertical>
+    <core-header-panel flex>
+        <core-toolbar>
+          <paper-tabs class="fit" selected="messages" flex>
+            <paper-tab name="messages">Messages</paper-tab>
+            <paper-tab name="favorites">Favorites</paper-tab>
+          </paper-tabs>
+        </core-toolbar>
+        <div class="container" layout vertical center>
+          <post-list></post-list>
+        </div>
+    </core-header-panel>
+</body>
+```
+
+* Le Core header est un conteneur responsive qui gère un header
+* Le core toolbar est une sorte d'action bar
+* fullbleed spécifie que l'on veut un écran sans marge et sans padding
+* layout spécifie qu'on utilise la propriété flex
+* vertical spécifie que le mode flex appliqué est en column
+* Le flex spécifie que ce conteneur doit prendre toute la place qu'il peut
+
+## Customisation du style css
+
+```css
+core-toolbar {
+  background: #03a9f4;
+  color: white;
+}
+paper-tabs {
+  text-transform: uppercase;
+}
+```
+
+## Customisation de nos composants
+
+### Post card
+
+```html
+ <div class="card-header" layout horizontal center>
+```
+
+Notre carte est donc flex centrée verticallement et horizontale
+
+### Post List
+
+```html
+<div layout vertical center>
+```
+
+Notre list est donc flex centrée horizontallement et verticale
