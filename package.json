@@ -15,7 +15,9 @@
     "url": "https://github.com/GDG-Nantes/CodeLabPolymer/issues"
   },
   "devDependencies": {
-    "browser-sync": "^2.1.1",
-    "gulp": "^3.8.11"
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~ 0.4.1",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-browser-sync": "~1.5.3"
   }
 }
