@@ -131,3 +131,81 @@ les balises <content> font références au html qui est intégré dans la balise
     <p>Hello GDG Folks!</p>
   </post-card>
 ```
+
+
+# Step 3
+
+
+## Création du post-list.html
+
+On va créer maintenant le composant post-list afin de manipuler l'encapsulation ! 
+
+```html
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../post-service/post-service.html">
+<link rel="import" href="post-card.html">
+
+<polymer-element name="post-list">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    post-card {
+      margin-bottom: 30px;
+    }
+    </style>
+
+    <post-service id="service" posts="{{posts}}">
+    </post-service>
+
+    <div>
+
+      <template repeat="{{post in posts}}">
+        <post-card>
+          <img src="{{post.avatar}}" width="70" height="70">
+          <h2>{{post.username}}</h2>
+          <p>{{post.text}}</p>
+        </post-card>
+      </template>
+
+    </div>
+
+  </template>
+
+  <script>
+  Polymer({
+    // define the element's JavaScript prototype here
+  });
+  </script>
+
+</polymer-element>
+
+```
+
+* On a toujours l'import de polymer 
+* On remarque l'import de post-card ! 
+* On a un import nouveau lié à notre webservice ! à noter l'utilisation d'un appel sous forme de balises ! C'est une bonne pratique polymer (on expose nos éléments)
+* On remarque le databinding comme dans Angular ! Attention cependant, le repeat doit etre fait avec une balise template ! On ne peut pas jouer le repeat sur une div !
+
+
+## Modification du index.html
+
+dans le index.html on retire l'import de post-card.html et à la place on met post-list.html car l'import est fait dans post-card. Au final s'il y a du multiple import, l'import ne se fait qu'une fois
+
+
+```html
+<head>
+    ...
+    <link rel="import"
+        href="post-list.html">
+  
+</head>
+<body unresolved>
+  <div class="container">
+     <post-list></post-list>
+  </div>
+  <script src="app.js"></script>
+</body>
+```

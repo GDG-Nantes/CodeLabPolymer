@@ -1,7 +1,5 @@
 <link rel="import"
   href="../components/polymer/polymer.html">
-<link rel="import"
-  href="../components/core-icon-button/core-icon-button.html">
 
 <polymer-element name="post-card">
   <template>
@@ -19,10 +17,24 @@
       margin-bottom: 10px;
     }
     /* Add your styles here: */
+    .card-header ::content h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+    .card-header ::content img {
+      width: 70px;
+      border-radius: 50%;
+      margin: 10px;
+    }
 
     </style>
 
-    <!-- CARD CONTENTS GO HERE -->
+    <div class="card-header">
+      <content select="img"></content>
+      <content select="h2"></content>
+    </div>
+    <content></content>
 
   </template>
   <script>

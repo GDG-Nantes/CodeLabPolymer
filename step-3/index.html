@@ -16,27 +16,17 @@
   <link rel="import"
     href="../components/font-roboto/roboto.html">
   <link rel="import"
-    href="../components/core-header-panel/core-header-panel.html">
-  <link rel="import"
-    href="../components/core-toolbar/core-toolbar.html">
-  <link rel="import"
-    href="../components/paper-tabs/paper-tabs.html">
-
+    href="post-list.html">
+  
 </head>
 
-<body unresolved fullbleed layout vertical>
-  <core-header-panel flex>
+<body unresolved>
 
-    <core-toolbar>
-      <paper-tabs class="fit" selected="messages" flex>
-        <paper-tab name="messages">Messages</paper-tab>
-        <paper-tab name="favorites">Favorites</paper-tab>
-      </paper-tabs>
-    </core-toolbar>
+  <div class="container">
 
-    <!-- main page content will go here -->
+      <post-list></post-list>
 
-  </core-header-panel>
+    </div>
 
   <script src="app.js"></script>
 </body>
