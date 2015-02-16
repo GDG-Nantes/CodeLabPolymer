@@ -278,3 +278,67 @@ Notre carte est donc flex centrée verticallement et horizontale
 ```
 
 Notre list est donc flex centrée horizontallement et verticale
+
+# Step 5
+
+On va ajouter des actions, se brancher sur les événements de polymer et filtrer notre liste ! 
+
+## Ajout du bouton sur la carte
+
+On va utiliser un autre composant polymer (sorte de font-awesome)
+
+```html
+<link rel="import"
+  href="../components/core-icon-button/core-icon-button.html">
+```
+
+On va styliser ce button 
+
+```css
+    core-icon-button {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      color: #636363;
+    }
+    :host([favorite]) core-icon-button {
+      color: #da4336;
+    }
+```
+
+On note l'utilisation du :host pour le style car l'attribut sera exposé directement sur la balise ! 
+
+```html
+    <div class="card-header" layout horizontal center>
+      <content select="img"></content>
+      <content select="h2"></content>
+    </div>
+
+    <core-icon-button
+      icon="favorite"
+      on-tap="{{favoriteTapped}}">
+    </core-icon-button>
+
+    <content></content>
+```
+
+On référence via binding la méthode à appeler lors du clic ! 
+
+```javascript
+ Polymer({
+      publish: {
+        favorite: {
+          value: false,
+          reflect: true
+        }
+      },
+      favoriteTapped: function(event, detail, sender) {
+        this.favorite = !this.favorite;
+        this.fire('favorite-tap');
+      }
+    });
+```
+
+On publie donc notre value 'favorite'. value:false veut dire que la valeur par défaut est false. reflect:true signigie que l'attribut doit etre mise à jour sur le dom quand la valeur change
+
+La méthode favoriteTapped est la méthode appelée lors du clic. On note aussi qu'un événement sera broadcasté
