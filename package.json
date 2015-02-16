@@ -1,0 +1,21 @@
+{
+  "name": "CodeLabPolymer",
+  "version": "1.0.0",
+  "description": "Codelab for GDG Nantes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GDG-Nantes/CodeLabPolymer.git"
+  },
+  "keywords": [
+    "polymer"
+  ],
+  "author": "jefBinomed",
+  "license": "Apache2.0",
+  "bugs": {
+    "url": "https://github.com/GDG-Nantes/CodeLabPolymer/issues"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.1.1",
+    "gulp": "^3.8.11"
+  }
+}
