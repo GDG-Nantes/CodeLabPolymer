@@ -348,6 +348,81 @@ On référence via binding la méthode à appeler lors du clic !
     });
 ```
 
-On publie donc notre value 'favorite'. value:false veut dire que la valeur par défaut est false. reflect:true signigie que l'attribut doit etre mise à jour sur le dom quand la valeur change
+On publie donc notre value 'favorite'. value:false veut dire que la valeur par défaut est false. reflect:true signigie que l'attribut doit etre mise à jour sur le dom quand la valeur change (si c'est false, on ne voit pas l'attribut)
 
 La méthode favoriteTapped est la méthode appelée lors du clic. On note aussi qu'un événement sera broadcasté
+
+## Intégration du favoris dans la liste
+
+```html
+ <post-card
+    favorite="{{post.favorite}}"
+    on-favorite-tap="{{handleFavorite}}">
+```
+
+* On récupère l'information issu du service
+* On fait quelque chose lors du clic (notez la syntaxe adoptée)
+
+```javascript
+Polymer({
+    handleFavorite: function(event, detail, sender) {
+      var post = sender.templateInstance.model.post;
+      this.$.service.setFavorite(post.uid, post.favorite);
+    }
+  });
+```
+
+On met à jour de le service
+
+* this.$ est un raccourci nous permettant d'accéder à des id du dom de notre composant. Ainsi this.$.service nous permet d'accéder à la balise ```<post-service id="service">```
+* this fait référence au Polymer Element 
+
+## Remontée des informations dans la page
+
+Il faut maintenant mettre à jour notre interface pour faire correspondre tout ça. En fonction du clic sur l'onglet, on affichera ou non les post-card.
+
+### Ajout de la gestion de la visibilité de la post-card
+
+On va modifier la list
+
+
+```html
+<polymer-element name="post-list" attributes="show">
+```
+
+On va exposer un attribut qui sera accessible dans le prototype du webcomponent
+
+```html
+ <post-card
+      favorite="{{post.favorite}}"
+      on-favorite-tap="{{handleFavorite}}"
+      hidden?="{{show == 'favorites' && !post.favorite}}">
+```
+
+On va conditionner l'affichage via l'attribut hidden? qui evaluera le contenu. On doit enfin modifier le fichier index.html pour prendre en compte ce nouvel attribut exposé ! 
+
+
+```html
+<post-list show="messages"></post-list>
+```
+
+La valeur de show correspondra à la valeur de l'onglet sélectionné
+
+
+### Ecoute du clic de tab
+
+On va ajouter enfin du code à notre javascript applicatif et on va écouter la sélection d'onglet.
+
+
+```javascript
+var tabs = document.querySelector('paper-tabs');
+
+var list = document.querySelector('post-list');
+
+tabs.addEventListener('core-select', function() {
+  list.show = tabs.selected;
+});
+```
+
+
+On mettra à jour l'attribut qui sera ainsi répercuté sur l'affichage
