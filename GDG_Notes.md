@@ -1,5 +1,5 @@
 # Notes pour nous
-Le but est de créer un composant comme dans le code lab de google. J'ai juste modifié le codelab afin de rajouter des étapes et de ne pas arriver direct à la phase utilisation de Polymer Paper !  Car en fait ce que veulent les gens en premier lieu c'est créer N composants, les voir interagir etc...
+Le but est de créer un composant comme dans le code lab de google. J'ai juste modifié le codelab afin de rajouter des étapes et de ne pas arriver direct à la phase d'utilisation de Polymer Paper !  Car en fait ce que veulent les gens en premier lieu c'est créer N composants, les voir interagir etc...
 
 
 # Description des répertoires
@@ -14,11 +14,11 @@ Le but est de créer un composant comme dans le code lab de google. J'ai juste m
 # Initialisation : 
 
 1. Git clone ou dl du repo
-2. Soit ils ont node et ils peuvent garder leur ide
+2. Soit les participants ont nodeJS et ils peuvent garder leur ide
   1. Ont-ils grunt ? npm instll -g grunt-cli
   2. npm install
   3. grunt => ça lance un serveur
-3. Soit ils ont pas node et utilisent dans ce cas le deveditor de chrome pour se faciliter le travail (ou encore brackets pour la partie livereload)
+3. Soit ils n'ont pas nodeJS et ils vont utiliser dans ce cas le DevEditor de chrome pour faciliter le travail (ou encore brackets pour la partie livereload)
 
 # Step 1 
 
@@ -41,7 +41,7 @@ Le but est de créer un composant comme dans le code lab de google. J'ai juste m
         });
     </script>
 </polymer-element>
-``` 
+```
 
 Ne pas oublier le 
 
@@ -75,12 +75,12 @@ Sans ça on ne peut pas afficher le contenu !
 <post-card><div>test</div></post-card>
 ```
 
-Cette dernière n'est pas visible car elle fait partie du shadowdom et on ne sait pas où la placer ! (cf step-2)
+Cette dernière n'est pas visible car elle fait partie du shadow-DOM et on ne sait pas où la placer ! (cf step-2)
 
 
 ## Step-2
 
-il fait référence au step-3 du codelab polymer
+Il fait référence au step-3 du codelab polymer
 
 Mise en place du style de post-card et du contenu ! 
 
