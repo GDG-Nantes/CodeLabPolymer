@@ -11,6 +11,15 @@ Le but est de créer un composant comme dans le code lab de google. J'ai juste m
 * step-4 : Ajout du style de paper pour se simplifier la vie au niveau des styles
 * step-5 : mise en place d'interactions
 
+# Initialisation : 
+
+1. Git clone ou dl du repo
+2. Soit ils ont node et ils peuvent garder leur ide
+  1. Ont-ils grunt ? npm instll -g grunt-cli
+  2. npm install
+  3. grunt => ça lance un serveur
+3. Soit ils ont pas node et utilisent dans ce cas le deveditor de chrome pour se faciliter le travail (ou encore brackets pour la partie livereload)
+
 # Step 1 
 
 ## Création du composant fichier html post-card.html
